@@ -10,15 +10,54 @@
 <body>
 
     <header>
+        <h1>My Odin Library</h1>
+        <form id="book-form">
 
+            <div class="input-item">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title">
+            </div>
+
+            <div class="input-item">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author">
+            </div>
+
+            <div class="input-item">
+                <label for="pages">Pages</label>
+                <input type="number" name="pages" id="pages">
+            </div>
+
+            <div class="input-item">
+                <input type="checkbox" name="read" id="read">
+                <label for="read">I have already read this book!</label>
+            </div>
+
+            <input type="submit" id="form-button" value="Add Book">
+        </form>
     </header>
 
     <main>
-        <div id="library-container"></div>
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </main>
     
     <footer>
-
+        <p>
+            This is a project in the JavaScript path of The Odin Project &copy; program. Crafted by <a href="https://github.com/mdemiguels/">@mdemiguels</a>
+        </p>
     </footer>
 
 </body>
