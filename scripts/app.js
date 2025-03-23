@@ -1,9 +1,24 @@
 import { myLibrary, addBookToLibrary } from './library.js';
 
 const tbody = document.querySelector('#book-table tbody');
+const form = document.querySelector('form');
 
 document.addEventListener('DOMContentLoaded', () => {
     loadBooksOnTable();
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = form.title.value;
+    const author = form.author.value;
+    const pages = form.pages.value;
+    const isRead = form.isRead.checked;
+
+    addBookToLibrary(title, author, pages, isRead);
+    const book = myLibrary[myLibrary.length - 1];
+    const row = createRow(book);
+    tbody.appendChild(row);
+    form.reset();
 });
 
 function loadBooksOnTable() {
@@ -43,6 +58,15 @@ function createCoulmns(book) {
     const optionsImg = document.createElement('img');
     optionsImg.src = './img/trash.svg';
     options.appendChild(optionsImg);
+    optionsImg.addEventListener('click', () => {
+        removeBook(book.id);
+    });
 
     return { title, author, pages, isRead, options };
+}
+
+function removeBook(id) {
+    const bookIndex = myLibrary.findIndex(book => book.id === id);
+    myLibrary.splice(bookIndex, 1);
+    document.getElementById(id).remove();
 }
